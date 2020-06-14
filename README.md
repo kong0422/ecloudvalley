@@ -1,14 +1,14 @@
 ## API Documentation
-    1. Get __lineItem/UnblendedCost__ grouping by __product/productname__
-        URL: http://localhost/ecloudvalley/api/product_cost.php
-        - Input
-          | Column | Required | type | default |
-          | ------ | -------- | ---- | -------:|
-          | lineitem/usageaccountid | true | integer |  |
-          | limit |  | integer | 10 |
-          | page |  | integer | 1 |
-          | q |  | string |  |
-        - Output
+1. Get __lineItem/UnblendedCost__ grouping by __product/productname__
+    - URL: http://localhost/ecloudvalley/api/product_cost.php
+    - Input
+      | Column     | Required | type | default |
+      | ------ | -------- | ---- | -------:|
+      | lineitem/usageaccountid | true | integer |  |
+      | limit |  | integer | 10 |
+      | page |  | integer | 1 |
+      | q |  | string |  |
+    - Output
         ```JSON
             {
                 "status": true,
@@ -27,18 +27,18 @@
                 }
             }
         ```
-    2. Get daily __lineItem/UsageAmount__ grouping by __product/productname__
-        URL：http://localhost/ecloudvalley/api/product_usage_amount.php
-        - Input
-          | Column | Required | type | default |
-          | ------ | -------- | ---- | -------:|
-          | lineitem/usageaccountid | true | integer |  |
-          | limit |  | integer | 10 |
-          | page |  | integer | 1 |
-          | q |  | string |  |
-          | begin_date |  | string(YYYY-MM-DD) |  |
-          | end_date |  | string(YYYY-MM-DD) |  |
-        - Output
+2. Get daily __lineItem/UsageAmount__ grouping by __product/productname__
+    - URL：http://localhost/ecloudvalley/api/product_usage_amount.php
+    - Input
+      | Column | Required | type | default |
+      | ------ | -------- | ---- | -------:|
+      | lineitem/usageaccountid | true | integer |  |
+      | limit |  | integer | 10 |
+      | page |  | integer | 1 |
+      | q |  | string |  |
+      | begin_date |  | string(YYYY-MM-DD) |  |
+      | end_date |  | string(YYYY-MM-DD) |  |
+    - Output
         ```JSON
             {
                 "status": true,
@@ -78,91 +78,91 @@
 
 ## DB schema
 
-    ```SQL
-        CREATE TABLE `output_mod` (
-        `f1` varchar(255) DEFAULT NULL,
-        `identity/LineItemId` varchar(255) DEFAULT NULL,
-        `bill/InvoiceId` varchar(255) DEFAULT NULL,
-        `bill/BillingEntity` varchar(255) DEFAULT NULL,
-        `bill/BillType` varchar(255) DEFAULT NULL,
-        `bill/PayerAccountId` varchar(255) DEFAULT NULL,
-        `bill/BillingPeriodStartDate` varchar(255) DEFAULT NULL,
-        `lineItem/UsageAccountId` int(11) NOT NULL,
-        `lineItem/LineItemType` varchar(255) DEFAULT NULL,
-        `lineItem/UsageStartDate` datetime DEFAULT NULL,
-        `lineItem/UsageEndDate` datetime DEFAULT NULL,
-        `lineItem/UsageType` varchar(255) DEFAULT NULL,
-        `lineItem/Operation` varchar(255) DEFAULT NULL,
-        `lineItem/AvailabilityZone` varchar(255) DEFAULT NULL,
-        `lineItem/ResourceId` varchar(255) DEFAULT NULL,
-        `lineItem/UsageAmount` double NOT NULL,
-        `lineItem/NormalizationFactor` varchar(255) DEFAULT NULL,
-        `lineItem/NormalizedUsageAmount` varchar(255) DEFAULT NULL,
-        `lineItem/UnblendedRate` varchar(255) DEFAULT NULL,
-        `lineItem/UnblendedCost` double NOT NULL,
-        `lineItem/LineItemDescription` varchar(255) DEFAULT NULL,
-        `product/ProductName` varchar(255) DEFAULT NULL,
-        `product/cacheEngine` varchar(255) DEFAULT NULL,
-        `product/databaseEdition` varchar(255) DEFAULT NULL,
-        `product/databaseEngine` varchar(255) DEFAULT NULL,
-        `product/deploymentOption` varchar(255) DEFAULT NULL,
-        `product/instanceType` varchar(255) DEFAULT NULL,
-        `product/instanceTypeFamily` varchar(255) DEFAULT NULL,
-        `product/licenseModel` varchar(255) DEFAULT NULL,
-        `product/location` varchar(255) DEFAULT NULL,
-        `product/operatingSystem` varchar(255) DEFAULT NULL,
-        `product/region` varchar(255) DEFAULT NULL,
-        `product/tenancy` varchar(255) DEFAULT NULL,
-        `pricing/LeaseContractLength` varchar(255) DEFAULT NULL,
-        `pricing/OfferingClass` varchar(255) DEFAULT NULL,
-        `pricing/PurchaseOption` varchar(255) DEFAULT NULL,
-        `pricing/publicOnDemandRate` varchar(255) DEFAULT NULL,
-        `pricing/term` varchar(255) DEFAULT NULL,
-        `reservation/AmortizedUpfrontCostForUsage` varchar(255) DEFAULT NULL,
-        `reservation/AmortizedUpfrontFeeForBillingPeriod` varchar(255) DEFAULT NULL,
-        `reservation/EffectiveCost` varchar(255) DEFAULT NULL,
-        `reservation/EndTime` varchar(255) DEFAULT NULL,
-        `reservation/ModificationStatus` varchar(255) DEFAULT NULL,
-        `reservation/NumberOfReservations` varchar(255) DEFAULT NULL,
-        `reservation/RecurringFeeForUsage` varchar(255) DEFAULT NULL,
-        `reservation/ReservationARN` varchar(255) DEFAULT NULL,
-        `reservation/StartTime` varchar(255) DEFAULT NULL,
-        `reservation/SubscriptionId` varchar(255) DEFAULT NULL,
-        `reservation/TotalReservedUnits` varchar(255) DEFAULT NULL,
-        `reservation/UnusedAmortizedUpfrontFeeForBillingPeriod` varchar(255) DEFAULT NULL,
-        `reservation/UnusedNormalizedUnitQuantity` varchar(255) DEFAULT NULL,
-        `reservation/UnusedQuantity` varchar(255) DEFAULT NULL,
-        `reservation/UnusedRecurringFee` varchar(255) DEFAULT NULL,
-        `reservation/UpfrontValue` varchar(255) DEFAULT NULL,
-        `savingsPlan/TotalCommitmentToDate` varchar(255) DEFAULT NULL,
-        `savingsPlan/SavingsPlanARN` varchar(255) DEFAULT NULL,
-        `savingsPlan/SavingsPlanRate` varchar(255) DEFAULT NULL,
-        `savingsPlan/UsedCommitment` varchar(255) DEFAULT NULL,
-        `savingsPlan/SavingsPlanEffectiveCost` varchar(255) DEFAULT NULL,
-        `savingsPlan/AmortizedUpfrontCommitmentForBillingPeriod` varchar(255) DEFAULT NULL,
-        `savingsPlan/RecurringCommitmentForBillingPeriod` varchar(255) DEFAULT NULL,
-        `savingsPlan/PurchaseTerm` varchar(255) DEFAULT NULL,
-        `savingsPlan/PaymentOption` varchar(255) DEFAULT NULL,
-        `savingsPlan/OfferingType` varchar(255) DEFAULT NULL,
-        `savingsPlan/Region` varchar(255) DEFAULT NULL,
-        `savingsPlan/StartTime` varchar(255) DEFAULT NULL,
-        `savingsPlan/EndTime` varchar(255) DEFAULT NULL,
-        `resourceTags/aws:createdBy` varchar(255) DEFAULT NULL,
-        `resourceTags/user:Billing` varchar(255) DEFAULT NULL,
-        `resourceTags/user:EBS` varchar(255) DEFAULT NULL,
-        `resourceTags/user:EC2` varchar(255) DEFAULT NULL,
-        `resourceTags/user:Environment` varchar(255) DEFAULT NULL,
-        `resourceTags/user:Name` varchar(255) DEFAULT NULL,
-        `resourceTags/user:Project` varchar(255) DEFAULT NULL,
-        `resourceTags/user:RDS` varchar(255) DEFAULT NULL,
-        `resourceTags/user:Site` varchar(255) DEFAULT NULL,
-        `resourceTags/user:autotag` varchar(255) DEFAULT NULL,
-        `resourceTags/user:ext01` varchar(255) DEFAULT NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```sql
+    CREATE TABLE `output_mod` (
+    `f1` varchar(255) DEFAULT NULL,
+    `identity/LineItemId` varchar(255) DEFAULT NULL,
+    `bill/InvoiceId` varchar(255) DEFAULT NULL,
+    `bill/BillingEntity` varchar(255) DEFAULT NULL,
+    `bill/BillType` varchar(255) DEFAULT NULL,
+    `bill/PayerAccountId` varchar(255) DEFAULT NULL,
+    `bill/BillingPeriodStartDate` varchar(255) DEFAULT NULL,
+    `lineItem/UsageAccountId` int(11) NOT NULL,
+    `lineItem/LineItemType` varchar(255) DEFAULT NULL,
+    `lineItem/UsageStartDate` datetime DEFAULT NULL,
+    `lineItem/UsageEndDate` datetime DEFAULT NULL,
+    `lineItem/UsageType` varchar(255) DEFAULT NULL,
+    `lineItem/Operation` varchar(255) DEFAULT NULL,
+    `lineItem/AvailabilityZone` varchar(255) DEFAULT NULL,
+    `lineItem/ResourceId` varchar(255) DEFAULT NULL,
+    `lineItem/UsageAmount` double NOT NULL,
+    `lineItem/NormalizationFactor` varchar(255) DEFAULT NULL,
+    `lineItem/NormalizedUsageAmount` varchar(255) DEFAULT NULL,
+    `lineItem/UnblendedRate` varchar(255) DEFAULT NULL,
+    `lineItem/UnblendedCost` double NOT NULL,
+    `lineItem/LineItemDescription` varchar(255) DEFAULT NULL,
+    `product/ProductName` varchar(255) DEFAULT NULL,
+    `product/cacheEngine` varchar(255) DEFAULT NULL,
+    `product/databaseEdition` varchar(255) DEFAULT NULL,
+    `product/databaseEngine` varchar(255) DEFAULT NULL,
+    `product/deploymentOption` varchar(255) DEFAULT NULL,
+    `product/instanceType` varchar(255) DEFAULT NULL,
+    `product/instanceTypeFamily` varchar(255) DEFAULT NULL,
+    `product/licenseModel` varchar(255) DEFAULT NULL,
+    `product/location` varchar(255) DEFAULT NULL,
+    `product/operatingSystem` varchar(255) DEFAULT NULL,
+    `product/region` varchar(255) DEFAULT NULL,
+    `product/tenancy` varchar(255) DEFAULT NULL,
+    `pricing/LeaseContractLength` varchar(255) DEFAULT NULL,
+    `pricing/OfferingClass` varchar(255) DEFAULT NULL,
+    `pricing/PurchaseOption` varchar(255) DEFAULT NULL,
+    `pricing/publicOnDemandRate` varchar(255) DEFAULT NULL,
+    `pricing/term` varchar(255) DEFAULT NULL,
+    `reservation/AmortizedUpfrontCostForUsage` varchar(255) DEFAULT NULL,
+    `reservation/AmortizedUpfrontFeeForBillingPeriod` varchar(255) DEFAULT NULL,
+    `reservation/EffectiveCost` varchar(255) DEFAULT NULL,
+    `reservation/EndTime` varchar(255) DEFAULT NULL,
+    `reservation/ModificationStatus` varchar(255) DEFAULT NULL,
+    `reservation/NumberOfReservations` varchar(255) DEFAULT NULL,
+    `reservation/RecurringFeeForUsage` varchar(255) DEFAULT NULL,
+    `reservation/ReservationARN` varchar(255) DEFAULT NULL,
+    `reservation/StartTime` varchar(255) DEFAULT NULL,
+    `reservation/SubscriptionId` varchar(255) DEFAULT NULL,
+    `reservation/TotalReservedUnits` varchar(255) DEFAULT NULL,
+    `reservation/UnusedAmortizedUpfrontFeeForBillingPeriod` varchar(255) DEFAULT NULL,
+    `reservation/UnusedNormalizedUnitQuantity` varchar(255) DEFAULT NULL,
+    `reservation/UnusedQuantity` varchar(255) DEFAULT NULL,
+    `reservation/UnusedRecurringFee` varchar(255) DEFAULT NULL,
+    `reservation/UpfrontValue` varchar(255) DEFAULT NULL,
+    `savingsPlan/TotalCommitmentToDate` varchar(255) DEFAULT NULL,
+    `savingsPlan/SavingsPlanARN` varchar(255) DEFAULT NULL,
+    `savingsPlan/SavingsPlanRate` varchar(255) DEFAULT NULL,
+    `savingsPlan/UsedCommitment` varchar(255) DEFAULT NULL,
+    `savingsPlan/SavingsPlanEffectiveCost` varchar(255) DEFAULT NULL,
+    `savingsPlan/AmortizedUpfrontCommitmentForBillingPeriod` varchar(255) DEFAULT NULL,
+    `savingsPlan/RecurringCommitmentForBillingPeriod` varchar(255) DEFAULT NULL,
+    `savingsPlan/PurchaseTerm` varchar(255) DEFAULT NULL,
+    `savingsPlan/PaymentOption` varchar(255) DEFAULT NULL,
+    `savingsPlan/OfferingType` varchar(255) DEFAULT NULL,
+    `savingsPlan/Region` varchar(255) DEFAULT NULL,
+    `savingsPlan/StartTime` varchar(255) DEFAULT NULL,
+    `savingsPlan/EndTime` varchar(255) DEFAULT NULL,
+    `resourceTags/aws:createdBy` varchar(255) DEFAULT NULL,
+    `resourceTags/user:Billing` varchar(255) DEFAULT NULL,
+    `resourceTags/user:EBS` varchar(255) DEFAULT NULL,
+    `resourceTags/user:EC2` varchar(255) DEFAULT NULL,
+    `resourceTags/user:Environment` varchar(255) DEFAULT NULL,
+    `resourceTags/user:Name` varchar(255) DEFAULT NULL,
+    `resourceTags/user:Project` varchar(255) DEFAULT NULL,
+    `resourceTags/user:RDS` varchar(255) DEFAULT NULL,
+    `resourceTags/user:Site` varchar(255) DEFAULT NULL,
+    `resourceTags/user:autotag` varchar(255) DEFAULT NULL,
+    `resourceTags/user:ext01` varchar(255) DEFAULT NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-        ALTER TABLE `output_mod`
-        ADD KEY `UsageAccountId` (`lineItem/UsageAccountId`),
-        ADD KEY `ProductName` (`product/ProductName`),
-        ADD KEY `UsageDT` (`lineItem/UsageStartDate`,`lineItem/UsageEndDate`);
-        COMMIT;
-    ```
+    ALTER TABLE `output_mod`
+    ADD KEY `UsageAccountId` (`lineItem/UsageAccountId`),
+    ADD KEY `ProductName` (`product/ProductName`),
+    ADD KEY `UsageDT` (`lineItem/UsageStartDate`,`lineItem/UsageEndDate`);
+    COMMIT;
+```
